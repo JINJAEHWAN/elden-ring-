@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3765839731233194003}
   - component: {fileID: 7042125999075497925}
+  - component: {fileID: 5567165258223939504}
   m_Layer: 0
   m_Name: Monster 2
   m_TagString: Untagged
@@ -27,10 +28,11 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6009185185188709008}
+  - {fileID: 8254206362993586273}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7042125999075497925
@@ -56,6 +58,129 @@ MonoBehaviour:
     attackTime: 3
   myAnim: {fileID: 6009185185179102260}
   myState: 0
+--- !u!136 &5567165258223939504
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 667280278331037365}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3
+  m_Height: 15
+  m_Direction: 1
+  m_Center: {x: 0, y: 7.5, z: 0}
+--- !u!1 &4347782119490096650
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8254206362993586273}
+  - component: {fileID: 1787473183694880547}
+  - component: {fileID: 4867597966545566406}
+  m_Layer: 0
+  m_Name: AIPerception
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8254206362993586273
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4347782119490096650}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3765839731233194003}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1787473183694880547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4347782119490096650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa1d6618bd83dff4a8d2486e513e7eac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyMask:
+    serializedVersion: 2
+    m_Bits: 1024
+  findEnemy:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7042125999075497925}
+        m_TargetAssemblyTypeName: Monster, Assembly-CSharp
+        m_MethodName: OnBattle
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  lostEnemy:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7042125999075497925}
+        m_TargetAssemblyTypeName: Monster, Assembly-CSharp
+        m_MethodName: LostTarget
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  myTarget: {fileID: 0}
+--- !u!135 &4867597966545566406
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4347782119490096650}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 10
+  m_Center: {x: 0, y: 10, z: 0}
 --- !u!1001 &6009185185188386886
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -67,6 +192,18 @@ PrefabInstance:
     - target: {fileID: 165622, guid: b7f1dfc4e01f4a645a02f3816571583e, type: 3}
       propertyPath: m_Name
       value: Hobgoblin_002_Mecanim
+      objectReference: {fileID: 0}
+    - target: {fileID: 465622, guid: b7f1dfc4e01f4a645a02f3816571583e, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 465622, guid: b7f1dfc4e01f4a645a02f3816571583e, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 465622, guid: b7f1dfc4e01f4a645a02f3816571583e, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 465622, guid: b7f1dfc4e01f4a645a02f3816571583e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -112,16 +249,59 @@ PrefabInstance:
       propertyPath: m_UseGravity
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5465622, guid: b7f1dfc4e01f4a645a02f3816571583e, type: 3}
+    - {fileID: 13565622, guid: b7f1dfc4e01f4a645a02f3816571583e, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 165622, guid: b7f1dfc4e01f4a645a02f3816571583e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1120679940977177509}
   m_SourcePrefab: {fileID: 100100000, guid: b7f1dfc4e01f4a645a02f3816571583e, type: 3}
 --- !u!95 &6009185185179102260 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 9598066, guid: b7f1dfc4e01f4a645a02f3816571583e, type: 3}
   m_PrefabInstance: {fileID: 6009185185188386886}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &6009185185188486832 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 165622, guid: b7f1dfc4e01f4a645a02f3816571583e, type: 3}
+  m_PrefabInstance: {fileID: 6009185185188386886}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1120679940977177509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6009185185188486832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 392f7e4df0aa40740b525920abedec52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackAction:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7042125999075497925}
+        m_TargetAssemblyTypeName: BattleSystem, Assembly-CSharp
+        m_MethodName: OnAttack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  skillAction:
+    m_PersistentCalls:
+      m_Calls: []
+  comboCheck:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &6009185185188709008 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 465622, guid: b7f1dfc4e01f4a645a02f3816571583e, type: 3}

@@ -54,10 +54,10 @@ public class CharacterMovement : BattleSystem
         followAction = () =>
         {
             myAnim.SetBool("walk", true);
-            if (!myAnim.GetBool("attack01")) battleData.attackTime -= Time.deltaTime;
+            if (!myAnim.GetBool("attack")) battleData.attackTime -= Time.deltaTime;
         };
         ArrivedAction = AttackCheck;
-        FollowTarget(target, battleData.AttackRange, () => !myAnim.GetBool("attack01"));
+        FollowTarget(target, battleData.AttackRange, () => !myAnim.GetBool("attack"));
     }
 
     void AttackCheck()
