@@ -28,15 +28,24 @@ public class PlayerAction : AnimProperty
         myModel.Rotate(Vector3.up * delta * rotDir);
         myAnim.SetFloat("Speed", inputDir.magnitude);
 
-        if (Input.GetKeyDown(KeyCode.Space) && !myAnim.GetBool("isRolling"))
+        if (Input.GetKeyDown(KeyCode.Space) && !myAnim.GetBool("isRolling") && !myAnim.GetBool("isCombo"))
         {
+            myAnim.SetBool("isRolling", true);
             myAnim.SetTrigger("isRoll");
         }
 
-        if(Input.GetMouseButtonDown(0) && !myAnim.GetBool("isCombo"))
+        if(Input.GetMouseButtonDown(0) && !myAnim.GetBool("isCombo") && !myAnim.GetBool("isRolling"))
         {
-            myAnim.SetTrigger("isAttack");
             myAnim.SetBool("isCombo", true);
+            myAnim.SetTrigger("isAttack");
+        }
+
+        if (Input.GetKey(KeyCode.LeftShift)  && !myAnim.GetBool("isRolling") && !myAnim.GetBool("isCombo"))
+        {
+            myAnim.SetBool("isRunning", true);
+        }
+        else {
+            myAnim.SetBool("isRunning", false);
         }
     }
 
@@ -66,7 +75,7 @@ public class PlayerAction : AnimProperty
         }
         if (inputCount == 0)
         {
-            myAnim.SetBool("IsComboble", false);
+            myAnim.SetBool("isCombo", false);
         }
     }
 }
