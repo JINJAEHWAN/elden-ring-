@@ -108,4 +108,5 @@ public class Monster : CharacterMovement
     {
         ChangeState(State.Normal);
     }
+
 }

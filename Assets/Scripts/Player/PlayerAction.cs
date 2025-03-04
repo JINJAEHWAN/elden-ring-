@@ -1,11 +1,13 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerAction : AnimProperty
 {
     public Transform myModel;
     bool IsComboCheck = false;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public Slider Hpslider;
+
     void Start()
     {
 
@@ -24,9 +26,10 @@ public class PlayerAction : AnimProperty
 
         float delta = Time.deltaTime * 720.0f;
         if (delta > angle) delta = angle;
-
-        myModel.Rotate(Vector3.up * delta * rotDir);
-        myAnim.SetFloat("Speed", inputDir.magnitude);
+        if(!myAnim.GetBool("isRolling") && !myAnim.GetBool("isCombo")) { 
+            myModel.Rotate(Vector3.up * delta * rotDir);
+            myAnim.SetFloat("Speed", inputDir.magnitude);
+        }
 
         if (Input.GetKeyDown(KeyCode.Space) && !myAnim.GetBool("isRolling") && !myAnim.GetBool("isCombo"))
         {
@@ -78,4 +81,5 @@ public class PlayerAction : AnimProperty
             myAnim.SetBool("isCombo", false);
         }
     }
+
 }
